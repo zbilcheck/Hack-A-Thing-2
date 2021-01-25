@@ -12,6 +12,13 @@
     "48": "logo-small.png",
     "128": "logo-small.png"
   },
+  "background": {
+    "scripts": ["app/background.js"]
+  },
   "content_security_policy": "script-src 'self' 'sha256-3cldSI6bLMMm6QS4LrEv6OEGY64XvQMqIfh0ncXpC3M='; object-src 'self'",  "permissions": [
+  ],
+  "permissions": [
+    "webRequest",
+    "*://developer.mozilla.org/"
   ]
 }
