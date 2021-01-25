@@ -2,7 +2,7 @@
   const tabStorage = {};
   const networkFilters = {
       urls: [
-          "*://developer.mozilla.org/*"
+          "https://www.facebook.com/*"
       ]
   };
 
@@ -23,11 +23,17 @@
 
   chrome.webRequest.onCompleted.addListener((details) => {
       const { tabId, requestId } = details;
+
       if (!tabStorage.hasOwnProperty(tabId) || !tabStorage[tabId].requests.hasOwnProperty(requestId)) {
           return;
       }
 
       const request = tabStorage[tabId].requests[requestId];
+      var re = new RegExp("https://www.facebook.com/$")
+      console.log(details.url)
+      if (re.test(details.url)) {
+          alert("Welcome to True Pill");
+      }
 
       Object.assign(request, {
           endTime: details.timeStamp,
@@ -68,4 +74,15 @@
       }
       tabStorage[tabId] = null;
   });
+
+  chrome.runtime.onMessage.addListener((msg, sender, response) => {
+    switch (msg.type) {
+        case 'popupInit':
+            response(tabStorage[msg.tabId]);
+            break;
+        default:
+            response('unknown request');
+            break;
+    }
+   });
 }());
