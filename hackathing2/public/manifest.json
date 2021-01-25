@@ -1,0 +1,17 @@
+{
+  "name": "True Pill",
+  "description": "This is our hack-a-thing for True Pill.",
+  "version": "0.1",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
+  },
+  "icons": {
+    "16": "logo-small.png",
+    "48": "logo-small.png",
+    "128": "logo-small.png"
+  },
+  "content_security_policy": "script-src 'self' 'sha256-3cldSI6bLMMm6QS4LrEv6OEGY64XvQMqIfh0ncXpC3M='; object-src 'self'",  "permissions": [
+  ]
+}
