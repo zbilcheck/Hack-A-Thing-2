@@ -1,3 +1,37 @@
+function getName(name) {
+    // All this api does is echo back the name
+    const url = 'https://do2ewch6z8.execute-api.us-east-2.amazonaws.com/default/hello-world-python';
+    let data = {
+        name: name
+    }
+    let fetchData = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    console.log(fetchData)
+    fetch(url, fetchData)
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('There was a problem connecting to the API. Status Code: ' + response.status);
+                    return;
+                }
+
+                response.json().then(function(data) {
+                    console.log("data.name: " + data.name);
+                    alert("Welcome to " + data.name);
+                    return;
+                });
+            }
+        )
+        .catch(function(err) {
+            console.log('Fetch error :-S', err);
+        });
+}
+
 (function() {
   const tabStorage = {};
   const networkFilters = {
@@ -32,7 +66,7 @@
       var re = new RegExp("https://www.facebook.com/$")
       console.log(details.url)
       if (re.test(details.url)) {
-          alert("Welcome to True Pill");
+          getName("True Pill");
       }
 
       Object.assign(request, {
