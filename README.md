@@ -3,7 +3,7 @@ Chloe Son, Bruce Zou, Hershel Wathore, Urie Choi, Zachary Bilcheck
 
 ## Description
 
-For this hack-a-thing, we wanted to create a very simple Chrome extension that detects when the user is on Facebook and displays a popup message. The goal was to learn the basics of creating an extension with React and using/integrating serverless functions (AWS Lambda). The extension detects when the user is on Facebook, sends an API request to the AWS Lambda (which just echoes back the name), and displays the alert "Welcome to [name]". [name] is just set to "True Pill".
+For this hack-a-thing, we wanted to create a very simple Chrome extension that detects when the user is on Facebook and displays a popup message. The goal was to learn the basics of creating an extension with React and using/integrating serverless functions (AWS Lambda). The extension detects when the user is on Facebook, sends an API request to the AWS Lambda (which just echoes back the name), and displays two different popups - one is the alert "Welcome to [name]", where [name] is just set to "True Pill". The other is a Chrome popup window.
 
 The extension is contained in the `hackathing2` directory. The API code is in `hackathing2_api`.
 

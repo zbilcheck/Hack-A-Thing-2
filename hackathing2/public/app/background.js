@@ -22,17 +22,8 @@ function getName(name) {
 
                 response.json().then(function(data) {
                     console.log("data.name: " + data.name);
-                    //alert("Welcome to " + data.name);
-
-                    chrome.windows.create({
-                      'url': chrome.extension.getURL("app/popup.html"),
-                      'height': 200,
-                      'width': 200,
-                      'type': "popup",
-                      'focused': true
-                    });
+                    alert("Welcome to " + data.name);
                     return;
-
                   }
                 );
             }
@@ -77,6 +68,13 @@ function getName(name) {
       console.log(details.url)
       if (re.test(details.url)) {
           getName("True Pill");
+          chrome.windows.create({
+            'url': chrome.extension.getURL("app/popup.html"),
+            'height': 200,
+            'width': 200,
+            'type': "popup",
+            'focused': true
+          });
       }
 
       Object.assign(request, {
