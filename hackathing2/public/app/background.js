@@ -22,9 +22,19 @@ function getName(name) {
 
                 response.json().then(function(data) {
                     console.log("data.name: " + data.name);
-                    alert("Welcome to " + data.name);
+                    //alert("Welcome to " + data.name);
+
+                    chrome.windows.create({
+                      'url': chrome.extension.getURL("app/popup.html"),
+                      'height': 200,
+                      'width': 200,
+                      'type': "popup",
+                      'focused': true
+                    });
                     return;
-                });
+
+                  }
+                );
             }
         )
         .catch(function(err) {
@@ -85,7 +95,7 @@ function getName(name) {
 
       const request = tabStorage[tabId].requests[requestId];
       Object.assign(request, {
-          endTime: details.timeStamp,           
+          endTime: details.timeStamp,
           status: 'error',
       });
       console.log(tabStorage[tabId].requests[requestId]);
