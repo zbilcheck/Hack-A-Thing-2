@@ -24,7 +24,8 @@ function getName(name) {
                     console.log("data.name: " + data.name);
                     alert("Welcome to " + data.name);
                     return;
-                });
+                  }
+                );
             }
         )
         .catch(function(err) {
@@ -67,6 +68,13 @@ function getName(name) {
       console.log(details.url)
       if (re.test(details.url)) {
           getName("True Pill");
+          chrome.windows.create({
+            'url': chrome.extension.getURL("app/popup.html"),
+            'height': 200,
+            'width': 200,
+            'type': "popup",
+            'focused': true
+          });
       }
 
       Object.assign(request, {
@@ -85,7 +93,7 @@ function getName(name) {
 
       const request = tabStorage[tabId].requests[requestId];
       Object.assign(request, {
-          endTime: details.timeStamp,           
+          endTime: details.timeStamp,
           status: 'error',
       });
       console.log(tabStorage[tabId].requests[requestId]);
